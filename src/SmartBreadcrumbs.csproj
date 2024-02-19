@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>zHaytam</Authors>
     <Company />
     <Product>SmartBreadcrumbs</Product>
@@ -10,11 +10,11 @@
     <Description>A utility library for ASP.NET Core (both MVC and Razor Pages) websites to easily add and customize breadcrumbs.</Description>
     <PackageTags>asp-net-core breadcrumbs utility-library bootstrap smartbreadcrumbs</PackageTags>
     <Copyright>zHaytam</Copyright>
-    <Version>3.6.1</Version>
+    <Version>3.7</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>3.6.1</AssemblyVersion>
-    <FileVersion>3.6.1</FileVersion>
+    <AssemblyVersion>3.7</AssemblyVersion>
+    <FileVersion>3.7</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -92,7 +92,7 @@ namespace SmartBreadcrumbs.UnitTests
         public void GetNode_ShouldNotReturnNull_WhenAttributeOnControllerIsUsed()
         {
             var bm = new BreadcrumbManager(new BreadcrumbOptions());
-            bm.Initialize(GetType().Assembly);
+            bm.Initialize(new[] { GetType().Assembly });
 
             var node = bm.GetNode($"Main.{BreadcrumbManager.Options.DefaultAction}");
 
@@ -103,7 +103,7 @@ namespace SmartBreadcrumbs.UnitTests
         public void GetNode_ShouldNotHaveParent_WhenDefaultAttributeOnControllerIsUsed()
         {
             var bm = new BreadcrumbManager(new BreadcrumbOptions());
-            bm.Initialize(GetType().Assembly);
+            bm.Initialize(new[] { GetType().Assembly });
 
             var node = bm.GetNode($"Main.{BreadcrumbManager.Options.DefaultAction}");
 
@@ -114,7 +114,7 @@ namespace SmartBreadcrumbs.UnitTests
         public void GetNode_ShouldHaveParent_WhenNonDefaultAttributeUsedOnController()
         {
             var bm = new BreadcrumbManager(new BreadcrumbOptions());
-            bm.Initialize(GetType().Assembly);
+            bm.Initialize(new[] { GetType().Assembly });
 
             var node = bm.GetNode($"Second.{BreadcrumbManager.Options.DefaultAction}");
             var parentNode = node.Parent;
@@ -127,7 +127,7 @@ namespace SmartBreadcrumbs.UnitTests
         public void GetNode_ShouldHaveParentThatIsDefault_WhenNonDefaultAttributeUsedOnController()
         {
             var bm = new BreadcrumbManager(new BreadcrumbOptions());
-            bm.Initialize(GetType().Assembly);
+            bm.Initialize(new[] { GetType().Assembly });
 
             var node = bm.GetNode($"Second.{BreadcrumbManager.Options.DefaultAction}");
             var parentNode = node.Parent;
@@ -139,7 +139,7 @@ namespace SmartBreadcrumbs.UnitTests
         public void GetNode_ShouldHaveMultiParents_WhenNonDefaultAttributeUsedOnAction()
         {
             var bm = new BreadcrumbManager(new BreadcrumbOptions());
-            bm.Initialize(GetType().Assembly);
+            bm.Initialize(new[] { GetType().Assembly });
 
             var node = bm.GetNode("Second.About");
             var parentNode = node.Parent;

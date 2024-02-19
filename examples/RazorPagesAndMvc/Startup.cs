@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +41,7 @@ namespace RazorPagesAndMvc
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddBreadcrumbs(GetType().Assembly, options =>
+            services.AddBreadcrumbs(new[] { GetType().Assembly }, options =>
             {
                 // Testing
                 options.DontLookForDefaultNode = true;

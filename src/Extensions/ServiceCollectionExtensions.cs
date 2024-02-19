@@ -9,22 +9,22 @@ namespace SmartBreadcrumbs.Extensions
     public static class ServiceCollectionExtensions
     {
 
-        public static void AddBreadcrumbs(this IServiceCollection services, Assembly assembly)
+        public static void AddBreadcrumbs(this IServiceCollection services, Assembly[] assemblies)
         {
-            AddBreadcrumbs(services, assembly, new BreadcrumbOptions());
+            AddBreadcrumbs(services, assemblies, new BreadcrumbOptions());
         }
 
-        public static void AddBreadcrumbs(this IServiceCollection services, Assembly assembly, Action<BreadcrumbOptions> optionsSetter)
+        public static void AddBreadcrumbs(this IServiceCollection services, Assembly[] assemblies, Action<BreadcrumbOptions> optionsSetter)
         {
             var options = new BreadcrumbOptions();
             optionsSetter.Invoke(options);
-            AddBreadcrumbs(services, assembly, options);
+            AddBreadcrumbs(services, assemblies, options);
         }
 
-        private static void AddBreadcrumbs(IServiceCollection services, Assembly assembly, BreadcrumbOptions options)
+        private static void AddBreadcrumbs(IServiceCollection services, Assembly[] assemblies, BreadcrumbOptions options)
         {
             var bm = new BreadcrumbManager(options);
-            bm.Initialize(assembly);
+            bm.Initialize(assemblies);
             services.AddSingleton(bm);
 
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
