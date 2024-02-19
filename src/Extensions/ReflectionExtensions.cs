@@ -48,7 +48,24 @@ namespace SmartBreadcrumbs.Extensions
 
             int startIndex = pagesIndex + razorPagesRootDirectory.Length + 1;
             int endIndex = fullName.EndsWith("Model") ? fullName.Length - 5 : fullName.Length;
-            return fullName.Substring(startIndex, endIndex - startIndex).Replace('.', '/');
+            var key = fullName.Substring(startIndex, endIndex - startIndex).Replace('.', '/');
+
+
+            var areaIndex = fullName.IndexOf(".Areas.");
+            if (areaIndex > 0)
+            {
+                var areaEndIndex = fullName.IndexOf(".", areaIndex + 7);
+                if(areaEndIndex > 0)
+                {
+                    var areaName = fullName.Substring(areaIndex + 7, (areaEndIndex - areaIndex) - 7);
+                    if (!string.IsNullOrWhiteSpace(areaName))
+                    {
+                        key = $"/{areaName}{key}";
+                    }
+                }
+            }
+
+            return key;
         }
 
         public static string ExtractMvcKey(this Type controllerType, MethodInfo actionMethod)

@@ -39,7 +39,13 @@ namespace SmartBreadcrumbs.Nodes
             get
             {
                 if (!string.IsNullOrWhiteSpace(_page))
+                {
+                    if(!string.IsNullOrWhiteSpace(_area))
+                    {
+                        return $"/{_area}{_page}";
+                    }
                     return _page;
+                }
 
                 if (string.IsNullOrWhiteSpace(_controller))
                     throw new SmartBreadcrumbsException("Route values do not contain 'page' or 'controller' when attempting to get node key.");
